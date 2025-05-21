@@ -1,0 +1,28 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joueurs inscrits - Virtual League Gaming</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
+  <style> /* (copie du style de index.html) */ </style>
+</head>
+<body>
+<header>…(nav identique)…</header>
+<main>
+  <h1>Joueurs déjà inscrits</h1>
+  <ul id="playerList" style="list-style:none;padding:0;"></ul>
+  <script>
+    const SHEET_KEY='TA_CLE_DE_SHEET';
+    window.onload=()=>Tabletop.init({key:SHEET_KEY,callback:data=>{
+      const ul=document.getElementById('playerList');ul.innerHTML='';
+      data.forEach(j=>{const li=document.createElement('li');li.textContent=`${j.Nom} – ${j.Points} pts`;ul.appendChild(li);});
+    },simpleSheet:true});
+  </script>
+</main>
+<footer>…</footer>
+</body>
+</html>
+```
