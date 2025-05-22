@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -12,11 +13,34 @@
       color: white;
       position: relative;
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .background-logo {
+      content: "";
+      background-image: url("https://i.imgur.com/jKqZqOo.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 80vmin;
+      opacity: 0.08;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 80vmin;
+      height: 80vmin;
+      transform: translate(-50%, -50%);
+      animation: spin 120s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     header {
       background-color: #0a1a3a;
-      height: 120px;
+      height: 100px;
       display: flex;
       align-items: center;
       padding: 0 20px;
@@ -25,7 +49,7 @@
     }
 
     header img.logo {
-      height: 100px;
+      height: 80px;
       width: auto;
     }
 
@@ -35,7 +59,7 @@
       justify-content: center;
       position: relative;
       top: 0;
-      z-index: 1;
+      z-index: 2;
       padding: 10px 0;
     }
 
@@ -58,26 +82,6 @@
       z-index: 2;
     }
 
-    .background-logo {
-      background-image: url("./assets/logo_vlg.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 80vmin;
-      opacity: 0.15;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 0;
-      animation: spin 120s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     footer {
       background-color: #001933;
       text-align: center;
@@ -91,7 +95,7 @@
   <div class="background-logo"></div>
 
   <header>
-    <img src="./assets/logo_vlg.png" alt="Logo VLG" class="logo" />
+    <img src="https://i.imgur.com/jKqZqOo.png" alt="Logo VLG" class="logo" />
   </header>
 
   <nav>
