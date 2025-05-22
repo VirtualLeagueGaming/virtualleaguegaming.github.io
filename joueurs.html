@@ -8,7 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background:#0a1e3f; color:#e0e7ff; min-height:100vh; display:flex; flex-direction:column; }
+    body { background-color:#0a1e3f; color:#e0e7ff; min-height:100vh; display:flex; flex-direction:column; position:relative; z-index:0; }
+    body::before { content:''; position:fixed; top:50%; left:50%; width:300px; height:300px; background:url('https://i.postimg.cc/YvRhFkWb/logo.png') no-repeat center/contain; opacity:0.05; transform:translate(-50%,-50%); z-index:-1; pointer-events:none; }
     header { background:linear-gradient(90deg,#004080,#0059b3); padding:1rem 2rem; box-shadow:0 3px 8px rgba(0,0,0,0.6); position:sticky; top:0; z-index:10; display:flex; align-items:center; }
     .logo { height:40px; margin-right:1rem; }
     nav { display:flex; gap:2rem; }
@@ -44,19 +45,10 @@
   <script>
     const SHEET_KEY = 'TA_CLE_DE_SHEET';
     window.onload = () => {
-      Tabletop.init({
-        key: SHEET_KEY,
-        callback: data => {
-          const ul = document.getElementById('playerList');
-          ul.innerHTML = '';
-          data.forEach(j => {
-            const li = document.createElement('li');
-            li.textContent = `${j.Nom} – ${j.Points} pts`;
-            ul.appendChild(li);
-          });
-        },
-        simpleSheet: true
-      });
+      Tabletop.init({ key: SHEET_KEY, callback: data => {
+        const ul = document.getElementById('playerList'); ul.innerHTML='';
+        data.forEach(j => { const li = document.createElement('li'); li.textContent = `${j.Nom} – ${j.Points} pts`; ul.appendChild(li); });
+      }, simpleSheet:true });
     };
   </script>
 </body>
