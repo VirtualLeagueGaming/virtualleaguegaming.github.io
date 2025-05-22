@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,7 +14,7 @@
       position:fixed; top:50%; left:50%;
       width:500px; height:500px;
       background: url('https://i.postimg.cc/YvRhFkWb/logo.png') no-repeat center/contain;
-      opacity:0.1;
+      opacity:0.2;
       transform:translate(-50%,-50%) rotate(0deg);
       animation: spin 60s linear infinite;
       z-index:-1; pointer-events:none;
@@ -22,15 +23,15 @@
     /* Header flottant indépendant */
     .header-wrapper {
       position:relative;
-      height:100px; /* hauteur espace pour logo */
+      height:120px; /* hauteur espace pour logo augmentée */
       background:none;
     }
     header {
       background:linear-gradient(90deg,#004080,#0059b3);
-      height:60px;         /* réduit la barre bleu */
+      height:60px;
       width:100%;
       box-shadow:0 3px 8px rgba(0,0,0,0.6);
-      position:fixed; top:0;
+      position:fixed; top:20px; /* déplacé vers le bas */
       display:flex; align-items:center;
       padding:0 2rem;
       z-index:10;
