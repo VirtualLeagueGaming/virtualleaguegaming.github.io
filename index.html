@@ -1,77 +1,116 @@
-<!-- index.html -->
-<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Virtual League Gaming - Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual League Gaming</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color:#0a1e3f; color:#e0e7ff; min-height:100vh; position:relative; overflow-x:hidden; }
-    /* Watermark animé */
-    body::before {
-      content:'';
-      position:fixed; top:50%; left:50%;
-      width:500px; height:500px;
-      background: url('https://i.postimg.cc/YvRhFkWb/logo.png') no-repeat center/contain;
-      opacity:0.2;
-      transform:translate(-50%,-50%) rotate(0deg);
-      animation: spin 60s linear infinite;
-      z-index:-1; pointer-events:none;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a1a3a;
+      color: white;
+      position: relative;
+      min-height: 100vh;
     }
-    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
-    /* Header flottant indépendant */
-    .header-wrapper {
-      position:relative;
-      height:120px; /* hauteur espace pour logo augmentée */
-      background:none;
-    }
+
     header {
-      background:linear-gradient(90deg,#004080,#0059b3);
-      height:60px;
-      width:100%;
-      box-shadow:0 3px 8px rgba(0,0,0,0.6);
-      position:fixed; top:20px; /* déplacé vers le bas */
-      display:flex; align-items:center;
-      padding:0 2rem;
-      z-index:10;
+      background-color: #0a1a3a;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
     }
-      z-index:10;
+
+    header img.logo {
+      height: 100px;
+      width: auto;
     }
-    .logo { height:80px; margin-right:1rem; }
-    nav { display:flex; gap:2rem; }
-    nav a { color:#cce0ff; text-decoration:none; font-weight:600; font-size:1.1rem; padding:0.4rem 0.6rem; border-radius:4px; transition:background-color .3s; }
-    nav a:hover, nav a.active { background-color:#1a73e8; color:#fff; }
+
+    nav {
+      background-color: #0052cc;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      top: 0;
+      z-index: 1;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    nav a.active, nav a:hover {
+      background-color: #1a73e8;
+    }
+
     main {
-      padding-top:120px; /* pour laisser place au header */
-      flex-grow:1; max-width:900px; margin:0 auto; text-align:center;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      z-index: 2;
     }
-    h1 { color:#a9d1ff; margin-bottom:1rem; text-shadow:0 0 5px #58a6ff; }
-    p { font-size:1.1rem; line-height:1.6; margin-bottom:2rem; color:#d0d9ff; }
-    .button { display:inline-block; padding:.75rem 1.5rem; background:#1a73e8; color:#fff; font-weight:700; border:none; border-radius:6px; cursor:pointer; box-shadow:0 3px 8px rgba(26,115,232,0.7); text-decoration:none; }
-    .button:hover { background:#004aad; }
-    footer { background:#00204d; text-align:center; padding:1rem 0; color:#8ca0d7; font-size:.9rem; margin-top:2rem; }
-    @media(max-width:600px){ nav{flex-direction:column;gap:1rem;} header{justify-content:flex-start;} }
+
+    .background-logo {
+      background-image: url("./assets/logo_vlg.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 80vmin;
+      opacity: 0.15;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      animation: spin 120s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      background-color: #001933;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
-  <div class="header-wrapper"></div>
+  <div class="background-logo"></div>
+
   <header>
-    <img src="https://i.postimg.cc/YvRhFkWb/logo.png" alt="Logo" class="logo" />
-    <nav>
-      <a href="index.html" class="active">Accueil</a>
-      <a href="inscription.html">Inscription</a>
-      <a href="joueurs.html">Joueurs inscrits</a>
-      <a href="equipes.html">Équipes</a>
-      <a href="classement.html">Classement</a>
-      <a href="statistiques.html">Statistiques</a>
-    </nav>
+    <img src="./assets/logo_vlg.png" alt="Logo VLG" class="logo" />
   </header>
+
+  <nav>
+    <a href="index.html" class="active">Accueil</a>
+    <a href="inscription.html">Inscription</a>
+    <a href="joueurs.html">Joueurs inscrits</a>
+    <a href="equipes.html">Équipes</a>
+    <a href="classement.html">Classement</a>
+    <a href="stats.html">Statistiques</a>
+  </nav>
+
   <main>
     <h1>Bienvenue sur Virtual League Gaming</h1>
     <p>La ligue par excellence pour le 3s sur NHL</p>
-    <a href="inscription.html" class="button">Rejoindre la ligue</a>
+    <a href="inscription.html" style="background-color: #1a73e8; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; margin-top: 20px;">Rejoindre la ligue</a>
   </main>
-  <footer>&copy; 2025 Virtual League Gaming - Tous droits réservés</footer>
+
+  <footer>
+    <p>&copy; 2025 Virtual League Gaming - Tous droits réservés</p>
+  </footer>
 </body>
 </html>
