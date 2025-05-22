@@ -20,13 +20,13 @@
       background-image: url("https://i.postimg.cc/YvRhFkWb/logo-vlg.png");
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 90vmin;
+      background-size: 80vmin;
       opacity: 0.05;
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 90vmin;
-      height: 90vmin;
+      width: 80vmin;
+      height: 80vmin;
       transform: translate(-50%, -50%);
       filter: blur(2px);
       animation: slowspin 180s linear infinite;
@@ -59,7 +59,6 @@
       display: flex;
       justify-content: center;
       position: relative;
-      top: 0;
       z-index: 2;
       padding: 8px 0;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -120,6 +119,43 @@
       position: relative;
       z-index: 2;
       font-size: 0.9rem;
+    }
+
+    /* Responsive Mobile Styles */
+    @media (max-width: 768px) {
+      header {
+        height: 80px;
+        padding: 0 15px;
+      }
+      header img.logo {
+        height: 60px;
+      }
+      nav {
+        flex-wrap: wrap;
+        padding: 6px 0;
+      }
+      nav a {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      main {
+        padding: 100px 15px 60px;
+      }
+      main h1 {
+        font-size: 2rem;
+      }
+      main p {
+        font-size: 1rem;
+      }
+      a.button {
+        padding: 12px 20px;
+        margin-top: 20px;
+      }
+      .background-logo {
+        background-size: 120vmin;
+        opacity: 0.03;
+      }
     }
   </style>
 </head>
