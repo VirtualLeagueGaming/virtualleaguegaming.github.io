@@ -7,19 +7,24 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
   <style>
-    /* Reprendre le même style que dans index.html */
-    body{background:#0a1e3f;color:#e0e7ff;font-family:'Segoe UI',sans-serif;margin:0;padding:0;}
-    header,footer{background:#00204d;padding:1rem;text-align:center;color:#8ca0d7;}
-    nav{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;}
-    nav a{color:#cce0ff;text-decoration:none;font-weight:600;}
-    nav a.active{color:#fff;}
-    main{max-width:900px;margin:0 auto;padding:1rem;}
-    ul{list-style:none;padding:0;}
-    li{padding:.5rem 0;border-bottom:1px solid #004080;}
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background:#0a1e3f; color:#e0e7ff; min-height:100vh; display:flex; flex-direction:column; }
+    header { background:linear-gradient(90deg,#004080,#0059b3); padding:1rem 2rem; box-shadow:0 3px 8px rgba(0,0,0,0.6); position:sticky; top:0; z-index:10; display:flex; align-items:center; }
+    .logo { height:40px; margin-right:1rem; }
+    nav { display:flex; gap:2rem; }
+    nav a { color:#cce0ff; text-decoration:none; font-weight:600; font-size:1.1rem; padding:0.4rem 0.6rem; border-radius:4px; transition:background-color .3s; }
+    nav a:hover, nav a.active { background-color:#1a73e8; color:#fff; }
+    main { flex-grow:1; max-width:900px; margin:2rem auto; padding:0 1rem; }
+    h1 { color:#a9d1ff; margin-bottom:1rem; text-shadow:0 0 5px #58a6ff; text-align:center; }
+    ul { list-style:none; margin-top:1rem; }
+    li { padding:.5rem 0; border-bottom:1px solid #004080; }
+    footer { background:#00204d; text-align:center; padding:1rem 0; color:#8ca0d7; font-size:.9rem; margin-top:auto; }
+    @media (max-width:600px){ header{flex-direction:column;align-items:flex-start;} nav{flex-direction:column;gap:1rem;} }
   </style>
 </head>
 <body>
   <header>
+    <img src="https://i.postimg.cc/YvRhFkWb/logo.png" alt="Logo Virtual League Gaming" class="logo" />
     <nav>
       <a href="index.html">Accueil</a>
       <a href="inscription.html">Inscription</a>
@@ -34,14 +39,25 @@
     <ul id="playerList"></ul>
   </main>
   <footer>
-    &copy; 2025 Virtual League Gaming - Tous droits réservés
+    &copy; 2025 Virtual League Gaming - Tous droits réservés
   </footer>
   <script>
-    const SHEET_KEY='TA_CLE_DE_SHEET';
-    window.onload=()=>Tabletop.init({key:SHEET_KEY,callback:data=>{
-      const ul=document.getElementById('playerList');ul.innerHTML='';
-      data.forEach(j=>{let li=document.createElement('li');li.textContent=`${j.Nom} – ${j.Points} pts`;ul.appendChild(li);});
-    },simpleSheet:true});
+    const SHEET_KEY = 'TA_CLE_DE_SHEET';
+    window.onload = () => {
+      Tabletop.init({
+        key: SHEET_KEY,
+        callback: data => {
+          const ul = document.getElementById('playerList');
+          ul.innerHTML = '';
+          data.forEach(j => {
+            const li = document.createElement('li');
+            li.textContent = `${j.Nom} – ${j.Points} pts`;
+            ul.appendChild(li);
+          });
+        },
+        simpleSheet: true
+      });
+    };
   </script>
 </body>
 </html>
