@@ -5,63 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Virtual League Gaming</title>
   <style>
-    /* Reset basique */
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Corps & fond */
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
-      color: #fff;
-      min-height: 100vh;
       background: url("https://i.postimg.cc/ZBXx4Cv0/patinoire.jpg") center/cover no-repeat;
-      position: relative;
-      overflow-x: hidden;
+      color: #fff;
     }
-    /* Overlay sombre pour le contraste */
+
     body::before {
       content: "";
-      position: fixed; top:0; left:0; right:0; bottom:0;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.6);
       z-index: 0;
-      pointer-events: none;
+    }
+
+    .container {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
     }
 
     /* Header */
     header {
-      position: relative; z-index: 2;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 20px;
-    }
-    header img.logo {
-      height: 60px;
-      width: auto;
+      text-align: center;
+      padding: 20px 10px 0;
+      position: relative;
     }
 
-    /* Hamburger */
-    .hamburger {
-      width: 30px; height: 24px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      cursor: pointer;
-      z-index: 3;
+    header img.logo {
+      height: 100px;
+      width: auto;
+      display: block;
+      margin: auto;
     }
+
+    .hamburger {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 4;
+    }
+
     .hamburger span {
       display: block;
       height: 4px;
       background: #1a73e8;
       border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
     }
 
-    /* Navigation cachée */
     nav {
-      position: fixed; top: 0; right: -220px;
-      width: 200px; height: 100vh;
+      position: fixed;
+      top: 0; right: -220px;
+      width: 200px; height: 100%;
       background: rgba(10,26,58,0.95);
-      display: flex; flex-direction: column; align-items: center; padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
       transition: right 0.3s ease;
-      z-index: 2;
+      z-index: 3;
     }
+
     nav.open { right: 0; }
+
     nav a {
       color: #fff;
       text-decoration: none;
@@ -71,30 +88,31 @@
       border-radius: 4px;
       transition: background 0.2s;
     }
+
     nav a:hover, nav a.active {
       background: #1a73e8;
     }
 
-    /* Main */
     main {
-      position: relative; z-index: 2;
+      flex: 1;
       text-align: center;
-      padding: 120px 20px 80px;
+      padding: 40px 20px 60px;
     }
+
     main h1 {
       font-size: 2.8rem;
       text-shadow: 0 0 8px rgba(0,0,0,0.7);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
+
     main p {
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
-      color: #ddd;
     }
+
     .btn {
-      display: inline-block;
       background: #1a73e8;
-      color: #fff;
+      color: white;
       padding: 14px 28px;
       font-size: 1rem;
       text-decoration: none;
@@ -102,63 +120,72 @@
       font-weight: bold;
       transition: background 0.3s, transform 0.2s;
     }
+
     .btn:hover {
       background: #1662c4;
       transform: scale(1.05);
     }
 
-    /* Footer */
     footer {
-      position: relative; z-index: 2;
       text-align: center;
       padding: 16px;
       background: rgba(10,26,58,0.8);
       font-size: 0.9rem;
     }
 
-    /* Responsive mobile */
     @media (max-width: 600px) {
-      header img.logo { height: 50px; }
-      main h1 { font-size: 2rem; }
+      header img.logo { height: 80px; }
+      main h1 { font-size: 2.2rem; }
       main p { font-size: 1rem; }
       .btn { padding: 12px 20px; font-size: 0.9rem; }
-      nav { width: 180px; padding-top: 70px; }
-      nav a { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <img src="https://i.postimg.cc/YvRhFkWb/logo-vlg.png" alt="Logo VLG" class="logo" />
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
 
-  <header>
-    <img src="https://i.postimg.cc/YvRhFkWb/logo-vlg.png" alt="Logo VLG" class="logo" />
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </header>
+    <nav id="menu">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="inscription.html">Inscription</a>
+      <a href="joueurs.html">Joueurs inscrits</a>
+      <a href="equipes.html">Équipes</a>
+      <a href="classement.html">Classement</a>
+      <a href="stats.html">Statistiques</a>
+    </nav>
 
-  <nav id="menu">
-    <a href="index.html" class="active">Accueil</a>
-    <a href="inscription.html">Inscription</a>
-    <a href="joueurs.html">Joueurs inscrits</a>
-    <a href="equipes.html">Équipes</a>
-    <a href="classement.html">Classement</a>
-    <a href="stats.html">Statistiques</a>
-  </nav>
+    <main>
+      <h1>Bienvenue sur Virtual League Gaming</h1>
+      <p>La ligue par excellence pour le 3s sur NHL</p>
+      <a href="inscription.html" class="btn">Rejoindre la ligue</a>
+    </main>
 
-  <main>
-    <h1>Bienvenue sur Virtual League Gaming</h1>
-    <p>La ligue par excellence pour le 3s sur NHL</p>
-    <a href="inscription.html" class="btn">Rejoindre la ligue</a>
-  </main>
-
-  <footer>
-    &copy; 2025 Virtual League Gaming – Tous droits réservés
-  </footer>
+    <footer>
+      &copy; 2025 Virtual League Gaming – Tous droits réservés
+    </footer>
+  </div>
 
   <script>
-    const ham = document.getElementById('hamburger'),
-          menu = document.getElementById('menu');
-    ham.addEventListener('click', () => menu.classList.toggle('open'));
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
+    // Ferme le menu quand on clique à l’extérieur
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Ferme aussi le menu quand on clique sur un lien
     menu.querySelectorAll('a').forEach(link =>
       link.addEventListener('click', () => menu.classList.remove('open'))
     );
