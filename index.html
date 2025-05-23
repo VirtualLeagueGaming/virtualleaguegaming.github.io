@@ -5,163 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Virtual League Gaming</title>
   <style>
+    /* RESET & BASE */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
       background-color: #0a1a3a;
       color: white;
-      position: relative;
       min-height: 100vh;
+      position: relative;
       overflow-x: hidden;
     }
 
-    /* Watermark animé en arrière-plan */
+    /* WATERMARK ANIMÉ */
     .background-logo {
-      background-image: url("https://i.postimg.cc/YvRhFkWb/logo-vlg.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 90vmin;
-      opacity: 0.05;
       position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 90vmin;
-      height: 90vmin;
+      top: 50%; left: 50%;
+      width: 90vmin; height: 90vmin;
       transform: translate(-50%, -50%);
+      background: url("https://i.postimg.cc/YvRhFkWb/logo-vlg.png") 
+                  center/contain no-repeat;
+      opacity: 0.05;
       filter: blur(2px);
-      animation: slowspin 180s linear infinite;
+      animation: spin 180s linear infinite;
       z-index: 0;
     }
-
-    @keyframes slowspin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
-    /* En-tête avec logo */
+    /* HEADER */
     header {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      height: 100px; padding: 0 20px;
       background: linear-gradient(to right, #0a1a3a, #1a2a5a);
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      position: relative;
-      z-index: 2;
     }
-
     header img.logo {
       height: 80px;
       width: auto;
     }
 
-    /* Barre de navigation */
+    /* NAVIGATION */
     nav {
-      background-color: #0052cc;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-      padding: 10px;
-      gap: 10px;
+      position: relative; z-index: 2;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      background: #0052cc;
+      padding: 8px 0; gap: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
-
     nav a {
       color: white;
       text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 5px;
+      padding: 8px 12px;
+      border-radius: 4px;
       transition: background 0.3s, transform 0.3s;
       font-size: 1rem;
     }
-
     nav a.active,
     nav a:hover {
-      background-color: #1a73e8;
+      background: #1a73e8;
       transform: scale(1.05);
     }
 
-    /* Contenu principal */
+    /* MAIN CONTENT */
     main {
+      position: relative; z-index: 2;
       text-align: center;
-      padding: 100px 20px 80px;
-      position: relative;
-      z-index: 2;
+      padding: 120px 20px 80px;
     }
-
     main h1 {
       font-size: 2.5rem;
-      margin-bottom: 10px;
+      margin-bottom: 0.5rem;
     }
-
     main p {
       font-size: 1.1rem;
       color: #ccc;
+      margin-bottom: 1.5rem;
     }
-
     a.button {
-      background-color: #1a73e8;
-      color: white;
-      padding: 14px 28px;
-      text-decoration: none;
-      border-radius: 8px;
       display: inline-block;
-      margin-top: 30px;
+      background: #1a73e8;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s ease, transform 0.2s;
+      transition: background 0.3s, transform 0.2s;
     }
-
     a.button:hover {
-      background-color: #1662c4;
+      background: #1662c4;
       transform: scale(1.05);
     }
 
-    /* Pied de page */
+    /* FOOTER */
     footer {
-      background-color: #001933;
+      position: relative; z-index: 2;
+      background: #001933;
       text-align: center;
       padding: 20px;
-      position: relative;
-      z-index: 2;
       font-size: 0.9rem;
     }
 
-    /* 📱 Styles responsive pour mobile */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      header {
-        height: 80px;
-        padding: 10px;
-      }
-
-      header img.logo {
-        height: 60px;
-      }
+      header { height: 80px; padding: 0 10px; }
+      header img.logo { height: 60px; }
 
       nav {
         flex-direction: column;
-        padding: 10px 0;
+        padding: 8px 0;
       }
-
       nav a {
-        font-size: 1rem;
-        padding: 10px 20px;
-        margin: 5px 0;
+        width: 90%;
+        margin: 4px auto;
+        text-align: center;
       }
 
-      main h1 {
-        font-size: 1.8rem;
+      main {
+        padding: 100px 15px 60px;
       }
-
-      main p {
-        font-size: 1rem;
-      }
-
+      main h1 { font-size: 2rem; }
+      main p { font-size: 1rem; }
       a.button {
-        padding: 12px 20px;
-        font-size: 1rem;
+        padding: 10px 20px;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -170,7 +139,11 @@
   <div class="background-logo"></div>
 
   <header>
-    <img src="https://postimg.cc/YvRhFkWb" alt="Logo VLG" class="logo" />
+    <img
+      src="https://i.postimg.cc/YvRhFkWb/logo-vlg.png"
+      alt="Logo Virtual League Gaming"
+      class="logo"
+    />
   </header>
 
   <nav>
@@ -189,7 +162,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Virtual League Gaming - Tous droits réservés</p>
+    &copy; 2025 Virtual League Gaming - Tous droits réservés
   </footer>
 </body>
 </html>
