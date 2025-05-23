@@ -34,12 +34,12 @@
     /* Header */
     header {
       text-align: center;
-      padding: 20px 10px 0;
+      padding: 30px 10px 0;
       position: relative;
     }
 
     header img.logo {
-      height: 100px;
+      height: 140px;
       width: auto;
       display: block;
       margin: auto;
@@ -47,7 +47,7 @@
 
     .hamburger {
       position: absolute;
-      top: 30px;
+      top: 40px;
       right: 20px;
       width: 30px;
       height: 24px;
@@ -101,11 +101,17 @@
     }
 
     main h1 {
+      font-size: 2.6rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .sous-titre {
       font-size: 2.8rem;
       text-shadow: 0 0 15px #00f0ff;
-      margin-bottom: 1rem;
       color: #00f0ff;
       letter-spacing: 1px;
+      margin-bottom: 1.5rem;
     }
 
     main p {
@@ -138,8 +144,9 @@
     }
 
     @media (max-width: 600px) {
-      header img.logo { height: 80px; }
-      main h1 { font-size: 2.2rem; }
+      header img.logo { height: 100px; }
+      main h1 { font-size: 2rem; }
+      .sous-titre { font-size: 2.2rem; }
       main p { font-size: 1rem; }
       .btn { padding: 12px 20px; font-size: 0.9rem; }
     }
@@ -164,7 +171,8 @@
     </nav>
 
     <main>
-      <h1>Bienvenue sur Virtual League Gaming</h1>
+      <h1>Bienvenue sur</h1>
+      <div class="sous-titre">Virtual League Gaming</div>
       <p>La ligue par excellence pour le 3s sur NHL</p>
       <a href="inscription.html" class="btn">Rejoindre la ligue</a>
     </main>
