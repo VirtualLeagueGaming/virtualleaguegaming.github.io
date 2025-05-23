@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Virtual League Gaming</title>
   <style>
-    /* RESET */
     * { margin:0; padding:0; box-sizing:border-box; }
 
-    /* CORPS */
     body {
       font-family: Arial, sans-serif;
       color: #fff;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
-      background-color: #0a1a3a; /* Fond unicolore */
+      background-color: #0a1a3a;
     }
 
     /* WATERMARK DU LOGO ANIMÉ */
@@ -29,92 +27,87 @@
       opacity: 0.15; filter: blur(2px);
       animation: spin 180s linear infinite;
       z-index: 1;
+      pointer-events: none;        /* ← empêche le filigrane de bloquer les clics */
     }
     @keyframes spin {
       from { transform: translate(-50%,-50%) rotate(0deg); }
       to   { transform: translate(-50%,-50%) rotate(360deg); }
     }
 
-    /* HEADER */
     header {
-      position:relative; z-index:2;
-      display:flex; align-items:center; justify-content:space-between;
-      height:100px; padding:0 20px;
-      background:transparent;
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100px; padding: 0 20px;
+      background: transparent;
     }
     header img.logo {
-      height:90px; width:auto;
+      height: 90px; width: auto;
     }
 
-    /* BOUTON HAMBURGER */
     .hamburger {
-      width:30px; height:24px;
-      display:flex; flex-direction:column; justify-content:space-between;
-      cursor:pointer; z-index:3;
+      width: 30px; height: 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      cursor: pointer; z-index: 3;
     }
     .hamburger span {
-      display:block; height:4px; background:#fff; border-radius:2px;
-      transition:transform .3s, opacity .3s;
+      display: block; height: 4px; background: #fff; border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
     }
 
-    /* MENU DÉROULANT */
     nav {
-      position:fixed; top:0; right:-250px;
-      width:200px; height:100vh;
-      background:rgba(0,0,0,0.85);
-      padding-top:120px;
-      display:flex; flex-direction:column; align-items:center; gap:20px;
-      transition:right .3s;
-      z-index:2;
+      position: fixed; top: 0; right: -250px;
+      width: 200px; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      padding-top: 120px;
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+      transition: right 0.3s;
+      z-index: 2;
     }
-    nav.open { right:0; }
+    nav.open { right: 0; }
     nav a {
-      color:#fff; text-decoration:none; font-size:1.1rem;
-      padding:8px 12px; border-radius:4px;
-      transition:background .3s;
+      color: #fff; text-decoration: none; font-size: 1.1rem;
+      padding: 8px 12px; border-radius: 4px;
+      transition: background 0.3s;
     }
     nav a:hover, nav a.active {
-      background:rgba(26,115,232,0.8);
+      background: rgba(26,115,232,0.8);
     }
 
-    /* CONTENU PRINCIPAL */
     main {
-      position:relative; z-index:2;
-      text-align:center;
-      padding:150px 20px 80px;
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 150px 20px 80px;
     }
     main h1 {
-      font-size:3rem; margin-bottom:.5rem;
-      text-shadow:0 0 10px rgba(0,0,0,0.7);
+      font-size: 3rem; margin-bottom: .5rem;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
     }
     main p {
-      font-size:1.2rem; color:#ddd; margin-bottom:1.5rem;
+      font-size: 1.2rem; color: #ddd; margin-bottom: 1.5rem;
     }
     .button {
-      background:#1a73e8; color:#fff;
-      padding:14px 28px; border-radius:8px;
-      text-decoration:none; font-weight:bold;
-      transition:background .3s, transform .2s;
+      background: #1a73e8; color: #fff;
+      padding: 14px 28px; border-radius: 8px;
+      text-decoration: none; font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
     }
     .button:hover {
-      background:#1662c4; transform:scale(1.05);
+      background: #1662c4; transform: scale(1.05);
     }
 
-    /* PIED DE PAGE */
     footer {
-      position:relative; z-index:2;
-      text-align:center; padding:20px;
-      background:rgba(0,0,0,0.7); font-size:.9rem;
+      position: relative; z-index: 2;
+      text-align: center; padding: 20px;
+      background: rgba(0,0,0,0.7); font-size: .9rem;
     }
 
-    /* RESPONSIVE */
-    @media (max-width:600px) {
-      header img.logo { height:70px; }
-      main h1 { font-size:2rem; }
-      main p { font-size:1rem; }
-      .button { padding:10px 20px; font-size:1rem; }
-      nav { width:160px; padding-top:100px; }
-      nav a { font-size:1rem; }
+    @media (max-width: 600px) {
+      header img.logo { height: 70px; }
+      main h1 { font-size: 2rem; }
+      main p { font-size: 1rem; }
+      .button { padding: 10px 20px; font-size: 1rem; }
+      nav { width: 160px; padding-top: 100px; }
+      nav a { font-size: 1rem; }
     }
   </style>
 </head>
@@ -122,11 +115,7 @@
   <div class="background-logo"></div>
 
   <header>
-    <img
-      src="https://i.postimg.cc/YvRhFkWb/logo-vlg.png"
-      alt="Logo VLG"
-      class="logo"
-    />
+    <img src="https://i.postimg.cc/YvRhFkWb/logo-vlg.png" alt="Logo VLG" class="logo" />
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
