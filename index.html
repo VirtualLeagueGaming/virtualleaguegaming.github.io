@@ -11,43 +11,60 @@
     html, body {
       height: 100%;
       font-family: 'Orbitron', sans-serif;
-      background: url("https://i.postimg.cc/ZBXx4Cv0/patinoire.jpg") center/cover no-repeat;
-      color: #fff;
+      background: #000;
+      overflow: hidden;
     }
 
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 0;
+      background: url('https://i.postimg.cc/ZBXx4Cv0/patinoire.jpg') center/cover no-repeat;
+      z-index: -2;
+    }
+
+    .fog {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://i.imgur.com/B9rJgWT.png') repeat;
+      opacity: 0.04;
+      animation: fogMove 60s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes fogMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 0; }
     }
 
     .container {
-      min-height: 100%;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
+      color: white;
+      text-align: center;
       position: relative;
       z-index: 1;
     }
 
-    /* Header */
     header {
-      text-align: center;
-      padding: 30px 10px 0;
+      padding: 20px 10px 0;
       position: relative;
     }
 
     header img.logo {
       height: 140px;
-      width: auto;
-      display: block;
-      margin: auto;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    header img.logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 12px #00f0ff);
     }
 
     .hamburger {
       position: absolute;
-      top: 40px;
+      top: 30px;
       right: 20px;
       width: 30px;
       height: 24px;
@@ -96,27 +113,30 @@
 
     main {
       flex: 1;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 40px 20px 60px;
     }
 
     main h1 {
-      font-size: 2.6rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 0.2rem;
     }
 
     .sous-titre {
       font-size: 2.8rem;
-      text-shadow: 0 0 15px #00f0ff;
       color: #00f0ff;
-      letter-spacing: 1px;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulseGlow 2s ease-in-out infinite;
       margin-bottom: 1.5rem;
     }
 
-    main p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff; }
+      50% { text-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff; }
     }
 
     .btn {
@@ -140,19 +160,11 @@
       padding: 16px;
       background: rgba(10,26,58,0.8);
       font-size: 0.9rem;
-      margin-top: auto;
-    }
-
-    @media (max-width: 600px) {
-      header img.logo { height: 100px; }
-      main h1 { font-size: 2rem; }
-      .sous-titre { font-size: 2.2rem; }
-      main p { font-size: 1rem; }
-      .btn { padding: 12px 20px; font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
+  <div class="fog"></div>
   <div class="container">
     <header>
       <img src="https://i.postimg.cc/YvRhFkWb/logo-vlg.png" alt="Logo VLG" class="logo" />
@@ -169,7 +181,6 @@
       <a href="classement.html">Classement</a>
       <a href="stats.html">Statistiques</a>
     </nav>
-
     <main>
       <h1>Bienvenue sur</h1>
       <div class="sous-titre">Virtual League Gaming</div>
