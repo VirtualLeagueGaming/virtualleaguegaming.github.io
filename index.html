@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Virtual League Gaming</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       height: 100%;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Orbitron', sans-serif;
       background: url("https://i.postimg.cc/ZBXx4Cv0/patinoire.jpg") center/cover no-repeat;
       color: #fff;
     }
@@ -101,8 +102,10 @@
 
     main h1 {
       font-size: 2.8rem;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+      text-shadow: 0 0 15px #00f0ff;
       margin-bottom: 1rem;
+      color: #00f0ff;
+      letter-spacing: 1px;
     }
 
     main p {
@@ -131,6 +134,7 @@
       padding: 16px;
       background: rgba(10,26,58,0.8);
       font-size: 0.9rem;
+      margin-top: auto;
     }
 
     @media (max-width: 600px) {
@@ -178,14 +182,12 @@
       menu.classList.toggle('open');
     });
 
-    // Ferme le menu quand on clique à l’extérieur
     document.addEventListener('click', (e) => {
       if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
         menu.classList.remove('open');
       }
     });
 
-    // Ferme aussi le menu quand on clique sur un lien
     menu.querySelectorAll('a').forEach(link =>
       link.addEventListener('click', () => menu.classList.remove('open'))
     );
